@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import openpyxl
 
 # Configurar título da página
 st.set_page_config(page_title='Despesas Deputados Federais 2023')
