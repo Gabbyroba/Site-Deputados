@@ -1,7 +1,3 @@
-import subprocess
-
-subprocess.check_call(["pip", "install", "openpyxl"])
-
 import pandas as pd
 import streamlit as st
 
@@ -14,6 +10,18 @@ df2 = pd.read_excel('despesasdepfinalcopia.xlsx')
 
 # Excluir colunas com valores negativos
 df = df.drop([12636, 23040, 32069, 33479], axis='index')
+
+# Função para carregar dados
+@st.cache_data
+def carregar_dados():
+    tabela = pd.read_excel('despesasdepfinal.xlsx')
+    return tabela
+
+# Função para carregar dados 2
+@st.cache_data
+def carregar_dados2():
+    tabela2 = pd.read_excel('despesasdepfinalcopia.xlsx')
+    return tabela2
 
 # Somar valores da coluna valorLiquido
 total_gastos = df['valorLiquido'].sum()
