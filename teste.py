@@ -5,8 +5,8 @@ import streamlit as st
 st.set_page_config(page_title='Despesas Deputados Federais 2023')
 
 # Ler arquivos e transformar em DF
-df = pd.read_excel('despesasdepfinal.xlsx')
-df2 = pd.read_excel('despesasdepfinalcopia.xlsx')
+df = pd.read_csv('despesasdepfinal.csv')
+df2 = pd.read_csv('despesasdepfinalcopia.csv')
 
 # Excluir colunas com valores negativos
 df = df.drop([12636, 23040, 32069, 33479], axis='index')
@@ -14,20 +14,20 @@ df = df.drop([12636, 23040, 32069, 33479], axis='index')
 # Função para carregar dados
 @st.cache_data
 def carregar_dados():
-    tabela = pd.read_excel('despesasdepfinal.xlsx')
+    tabela = pd.read_csv('despesasdepfinal.csv')
     return tabela
 
 # Função para carregar dados 2
 @st.cache_data
 def carregar_dados2():
-    tabela2 = pd.read_excel('despesasdepfinalcopia.xlsx')
+    tabela2 = pd.read_csv('despesasdepfinalcopia.csv')
     return tabela2
 
 # Somar valores da coluna valorLiquido
 total_gastos = df['valorLiquido'].sum()
 
 # Plotar um cartão com a soma
-st.subheader('Total de Gastos')
+st.subheader('Valor Líquido')
 st.info(f"R${total_gastos:.2f}")
 
 with st.container():
